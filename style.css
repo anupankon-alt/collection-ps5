@@ -1,0 +1,212 @@
+/* --- 1. SETTINGS & VARIABLES --- */
+:root {
+    --bg: #050606;
+    --panel: #101414;
+    --white: #f4f5f2;
+    --gray: #a0aaa7;
+    --cyan: #20cce1;
+    --green: #8ce66c;
+    --border: #252b29;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Kanit', sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* --- 2. HEADER --- */
+header {
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 50px;
+}
+
+.logo {
+    font: 900 22px 'Inter', sans-serif;
+    text-decoration: none;
+    color: white;
+}
+
+.logo span { color: var(--cyan); }
+
+nav { display: flex; gap: 30px; }
+
+nav a {
+    font: 700 11px 'Inter', sans-serif;
+    color: var(--gray);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+nav a:hover, nav a.active { color: var(--green); }
+
+/* --- 3. HERO SECTION --- */
+.hero {
+    padding: 60px 0 100px;
+}
+
+.eyebrow {
+    color: var(--cyan); 
+    font: 700 11px 'Inter', sans-serif; 
+    letter-spacing: 3px; 
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font: 900 clamp(45px, 8vw, 90px)/0.95 'Inter', sans-serif;
+    letter-spacing: -4px;
+}
+
+.gradient {
+    background: linear-gradient(95deg, var(--cyan), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: var(--gray);
+    max-width: 600px;
+    margin-top: 25px;
+    font-size: 17px;
+}
+
+/* --- 4. GAME GRID --- */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 100px;
+}
+
+.game-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    position: relative;
+}
+
+.game-card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-10px);
+}
+
+/* --- 5. GAME ART --- */
+.game-art {
+    height: 280px;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    isolation: isolate;
+}
+
+.game-art img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transition: transform 0.6s ease;
+}
+
+.game-art::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.1) 0%, 
+        rgba(0,0,0,0.9) 100%);
+    background-color: var(--accent);
+    mix-blend-mode: multiply;
+    opacity: 0.75;
+}
+
+.game-card:hover .game-art img {
+    transform: scale(1.1);
+}
+
+.game-index {
+    display: flex;
+    justify-content: space-between;
+    font: 800 10px 'Inter', sans-serif;
+    color: white;
+    opacity: 0.8;
+}
+
+.game-art-title {
+    font: 900 34px/0.9 'Inter', sans-serif;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+}
+
+.game-art-sub {
+    display: block;
+    font: 700 9px 'Inter', sans-serif;
+    letter-spacing: 2px;
+    color: var(--green);
+    margin-top: 8px;
+}
+
+/* --- 6. GAME INFO --- */
+.game-info {
+    padding: 22px;
+}
+
+.game-info h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.game-info p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* --- 7. FOOTER --- */
+footer {
+    padding: 50px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: #555;
+    font: 700 10px 'Inter', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* --- 8. RESPONSIVE --- */
+@media (max-width: 900px) {
+    .game-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .game-grid { grid-template-columns: 1fr; }
+    .hero h1 { letter-spacing: -2px; }
+}
